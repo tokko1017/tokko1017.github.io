@@ -4,10 +4,11 @@
  *  コマンド実行やビルド作業は一切不要です。
  *
  *  【本を1冊追加する手順】
- *   1. 下の `books` 配列の最後に、カンマ区切りで1ブロック追加する
+ *   1. 下の `books` 配列の一番上（先頭）に、カンマ区切りで1ブロック追加する
+ *      ※新しい本ほど上に表示される仕組みのため、必ず「先頭」に追加してください
  *   2. 表紙画像を images フォルダに入れて、coverImage にファイル名を書く
  *   3. ファイルを保存して index.html をブラウザで開く（更新する）
- *      → 自動的にカテゴリーの一覧に追加されます
+ *      → 自動的にカテゴリーの一覧の一番上に追加されます
  *
  *  【各項目の説明】
  *   id          : 他の本と重複しない半角英数字のID（例: "book-002"）
@@ -42,122 +43,12 @@ const SITE_CONFIG = {
 
 const books = [
   {
-    id: "nanobanana-nyumon",
-    title: "3分でわかるAI画像のはじめ方 Nano Banana超入門 ―はじめてのAI画像生成―",
-    author: "AIイラスト・クリエイティブナビゲーター しずく",
-    description: "Googleの最新AI画像生成ツール「Nano Banana」の使い方が3分でわかる完全入門ガイド。基本操作から\"魅せる\"プロンプト設計まで解説。",
-    coverImage: "images/1.png",
-    amazonUrl: "https://www.amazon.co.jp/dp/B0FWQTTPFK",
-    category: "ebook",
-    badge: "Kindle Unlimited 対象"
-  },
-  {
-    id: "kekkon-mibunkekata",
-    title: "30代女性必読！「結婚してはいけない男」の脳科学的見分け方",
-    author: "男性脳ナビゲーター 雫",
-    description: "「また同じタイプに惹かれてしまった…」30代女性必読。脳科学的な見分け方を25項目のチェックリストと30日間アクションプランで解説。",
-    coverImage: "images/2.png",
-    amazonUrl: "https://www.amazon.co.jp/dp/B0G18LRW2M",
-    category: "ebook",
-    badge: "Kindle Unlimited 対象"
-  },
-  {
-    id: "shodogai-bug",
-    title: "衝動買いは脳のバグである ―最新脳科学が教える「損しない」お金の使い方―",
-    author: "脳科学マネーアドバイザー 雫",
-    description: "「また買っちゃった…」はあなたのせいじゃない。最新脳科学が教える、年間50万円を守る「損しない」お金の使い方。",
-    coverImage: "images/3.png",
-    amazonUrl: "https://www.amazon.co.jp/dp/B0G2T6JDR4",
-    category: "ebook",
-    badge: "Kindle Unlimited 対象"
-  },
-  {
-    id: "zubora-kakuteishinkoku",
-    title: "完全マンガ版 ズボラな私が、AIとふたりで「確定申告」を攻略した話",
-    author: "しずく",
-    description: "家事按分の境界線から青色申告65万円控除まで、AIと一緒に確定申告を攻略するフリーランス・個人事業主必読の一冊。",
-    coverImage: "images/4.jpg",
-    amazonUrl: "https://www.amazon.co.jp/dp/B0GBZFP912",
-    category: "ebook",
-    badge: "Kindle Unlimited 対象"
-  },
-  {
-    id: "chatgpt-eigyojutsu",
-    title: "成約率が「勝手に」上がるChatGPT営業術 ―実践プロンプト25―",
-    author: "AIナビゲーター しずく",
-    description: "準備10分で成約2倍。トップセールスの思考をコピーする実践プロンプト25で、成約率が「勝手に」上がる営業術。",
-    coverImage: "images/5.png",
-    amazonUrl: "https://www.amazon.co.jp/dp/B0GHMWQPC8",
-    category: "ebook",
-    badge: "Kindle Unlimited 対象"
-  },
-  {
-    id: "iiko-yamete",
-    title: "もう、「いい子」をやめてもいいですか？",
-    author: "心理カウンセラー 雫",
-    description: "我慢しすぎて、苦しいあなたへ。読むだけで心が軽くなる心理学。「いい子」をやめた瞬間、人生は動き出す7つのステップ。",
-    coverImage: "images/6.png",
-    amazonUrl: "https://www.amazon.co.jp/dp/B0GL4FBMGF",
-    category: "ebook",
-    badge: "Kindle Unlimited 対象"
-  },
-  {
-    id: "wagaya-tenshi-01",
-    title: "わが家の天使は、本業・破壊神でした。 ―離乳食は時速100kmで飛んでいく―",
-    author: "水月 雫",
-    description: "離乳食は時速100kmで飛んでいく。育児あるある満載のフルカラーコミックエッセイ、第1話。",
-    coverImage: "images/7.jpg",
-    amazonUrl: "https://www.amazon.co.jp/dp/B0GLM7932M",
-    category: "ebook",
-    badge: "Kindle Unlimited 対象"
-  },
-  {
-    id: "wagaya-tenshi-02",
-    title: "わが家の天使は、本業・破壊神でした 第2話 ―30万円の壁紙がキャンバスになった午後―",
-    author: "水月 雫",
-    description: "30万円の壁紙がキャンバスになった午後。育児あるある満載のコミックエッセイ第2話。",
-    coverImage: "images/8.jpg",
-    amazonUrl: "https://www.amazon.co.jp/dp/B0GM1PQNNM",
-    category: "ebook",
-    badge: "Kindle Unlimited 対象"
-  },
-  {
-    id: "wagaya-tenshi-03",
-    title: "わが家の天使は、本業・破壊神でした 第3話 ―深夜2時のパーティータイム、ママは白目―",
-    author: "水月 雫",
-    description: "深夜2時のパーティータイム、ママは白目。全国のママが共感する育児あるある満載の第3話。",
-    coverImage: "images/9.jpg",
-    amazonUrl: "https://www.amazon.co.jp/dp/B0GNCKH9FD",
-    category: "ebook",
-    badge: "Kindle Unlimited 対象"
-  },
-  {
-    id: "googlemap-choshinkaron",
-    title: "2026年版 Googleマップ超進化論 完全マニュアル ―AI時代の最強パートナー―",
-    author: "AIアドバイザー 水月 雫",
-    description: "探す・迷う・悩む時間はもう終わり。Geminiと歩く超・活用術。AI時代の最強パートナー、完全マニュアル。",
-    coverImage: "images/11.png",
-    amazonUrl: "https://www.amazon.co.jp/dp/B0FPD7GHFL",
-    category: "ebook",
-    badge: "Kindle Unlimited 対象"
-  },
-  {
-    id: "kakuteishinkoku-wana",
-    title: "3月16日まで！まだ間に合う確定申告の「罠」 ―2026年最新版―",
-    author: "しずく",
-    description: "変わった「基礎控除」と「特定親族控除」を攻略して、還付金を取り戻す最短ルート。初心者でも安心のフルカラー漫画解説。",
-    coverImage: "images/10.png",
-    amazonUrl: "https://www.amazon.co.jp/dp/B0GQXY2MM7",
-    category: "ebook",
-    badge: "Kindle Unlimited 対象"
-  },
-  {
-    id: "code-ai-kakasero",
-    title: "コードは、AIに書かせろ。 ―Claude Code×Groqで開発速度を10倍にする実践ガイド―",
-    author: "AIアドバイザー 水月 雫",
-    description: "Claude Code×Groqで開発速度を10倍にする実践ガイド。AI×開発者必携の一冊。",
-    coverImage: "images/12.jpg",
-    amazonUrl: "https://www.amazon.co.jp/dp/B0H3W8XZTP",
+    id: "kansatsuryoku-sainou",
+    title: "観察力は、才能じゃない。 ―5つの技術で、相手の本音が見えてくる―",
+    author: "arato",
+    description: "5つの技術で、相手の本音が見えてくる。一生使える「人を理解する力」を、あなたの武器に。",
+    coverImage: "images/15.jpg",
+    amazonUrl: "https://www.amazon.co.jp/dp/B0H9SXQ4JC",
     category: "ebook",
     badge: "Kindle Unlimited 対象"
   },
@@ -182,12 +73,122 @@ const books = [
     badge: "Kindle Unlimited 対象"
   },
   {
-    id: "kansatsuryoku-sainou",
-    title: "観察力は、才能じゃない。 ―5つの技術で、相手の本音が見えてくる―",
-    author: "arato",
-    description: "5つの技術で、相手の本音が見えてくる。一生使える「人を理解する力」を、あなたの武器に。",
-    coverImage: "images/15.jpg",
-    amazonUrl: "https://www.amazon.co.jp/dp/B0H9SXQ4JC",
+    id: "code-ai-kakasero",
+    title: "コードは、AIに書かせろ。 ―Claude Code×Groqで開発速度を10倍にする実践ガイド―",
+    author: "AIアドバイザー 水月 雫",
+    description: "Claude Code×Groqで開発速度を10倍にする実践ガイド。AI×開発者必携の一冊。",
+    coverImage: "images/12.jpg",
+    amazonUrl: "https://www.amazon.co.jp/dp/B0H3W8XZTP",
+    category: "ebook",
+    badge: "Kindle Unlimited 対象"
+  },
+  {
+    id: "kakuteishinkoku-wana",
+    title: "3月16日まで！まだ間に合う確定申告の「罠」 ―2026年最新版―",
+    author: "しずく",
+    description: "変わった「基礎控除」と「特定親族控除」を攻略して、還付金を取り戻す最短ルート。初心者でも安心のフルカラー漫画解説。",
+    coverImage: "images/10.png",
+    amazonUrl: "https://www.amazon.co.jp/dp/B0GQXY2MM7",
+    category: "ebook",
+    badge: "Kindle Unlimited 対象"
+  },
+  {
+    id: "wagaya-tenshi-03",
+    title: "わが家の天使は、本業・破壊神でした 第3話 ―深夜2時のパーティータイム、ママは白目―",
+    author: "水月 雫",
+    description: "深夜2時のパーティータイム、ママは白目。全国のママが共感する育児あるある満載の第3話。",
+    coverImage: "images/9.jpg",
+    amazonUrl: "https://www.amazon.co.jp/dp/B0GNCKH9FD",
+    category: "ebook",
+    badge: "Kindle Unlimited 対象"
+  },
+  {
+    id: "wagaya-tenshi-02",
+    title: "わが家の天使は、本業・破壊神でした 第2話 ―30万円の壁紙がキャンバスになった午後―",
+    author: "水月 雫",
+    description: "30万円の壁紙がキャンバスになった午後。育児あるある満載のコミックエッセイ第2話。",
+    coverImage: "images/8.jpg",
+    amazonUrl: "https://www.amazon.co.jp/dp/B0GM1PQNNM",
+    category: "ebook",
+    badge: "Kindle Unlimited 対象"
+  },
+  {
+    id: "wagaya-tenshi-01",
+    title: "わが家の天使は、本業・破壊神でした。 ―離乳食は時速100kmで飛んでいく―",
+    author: "水月 雫",
+    description: "離乳食は時速100kmで飛んでいく。育児あるある満載のフルカラーコミックエッセイ、第1話。",
+    coverImage: "images/7.jpg",
+    amazonUrl: "https://www.amazon.co.jp/dp/B0GLM7932M",
+    category: "ebook",
+    badge: "Kindle Unlimited 対象"
+  },
+  {
+    id: "iiko-yamete",
+    title: "もう、「いい子」をやめてもいいですか？",
+    author: "心理カウンセラー 雫",
+    description: "我慢しすぎて、苦しいあなたへ。読むだけで心が軽くなる心理学。「いい子」をやめた瞬間、人生は動き出す7つのステップ。",
+    coverImage: "images/6.png",
+    amazonUrl: "https://www.amazon.co.jp/dp/B0GL4FBMGF",
+    category: "ebook",
+    badge: "Kindle Unlimited 対象"
+  },
+  {
+    id: "chatgpt-eigyojutsu",
+    title: "成約率が「勝手に」上がるChatGPT営業術 ―実践プロンプト25―",
+    author: "AIナビゲーター しずく",
+    description: "準備10分で成約2倍。トップセールスの思考をコピーする実践プロンプト25で、成約率が「勝手に」上がる営業術。",
+    coverImage: "images/5.png",
+    amazonUrl: "https://www.amazon.co.jp/dp/B0GHMWQPC8",
+    category: "ebook",
+    badge: "Kindle Unlimited 対象"
+  },
+  {
+    id: "zubora-kakuteishinkoku",
+    title: "完全マンガ版 ズボラな私が、AIとふたりで「確定申告」を攻略した話",
+    author: "しずく",
+    description: "家事按分の境界線から青色申告65万円控除まで、AIと一緒に確定申告を攻略するフリーランス・個人事業主必読の一冊。",
+    coverImage: "images/4.jpg",
+    amazonUrl: "https://www.amazon.co.jp/dp/B0GBZFP912",
+    category: "ebook",
+    badge: "Kindle Unlimited 対象"
+  },
+  {
+    id: "shodogai-bug",
+    title: "衝動買いは脳のバグである ―最新脳科学が教える「損しない」お金の使い方―",
+    author: "脳科学マネーアドバイザー 雫",
+    description: "「また買っちゃった…」はあなたのせいじゃない。最新脳科学が教える、年間50万円を守る「損しない」お金の使い方。",
+    coverImage: "images/3.png",
+    amazonUrl: "https://www.amazon.co.jp/dp/B0G2T6JDR4",
+    category: "ebook",
+    badge: "Kindle Unlimited 対象"
+  },
+  {
+    id: "kekkon-mibunkekata",
+    title: "30代女性必読！「結婚してはいけない男」の脳科学的見分け方",
+    author: "男性脳ナビゲーター 雫",
+    description: "「また同じタイプに惹かれてしまった…」30代女性必読。脳科学的な見分け方を25項目のチェックリストと30日間アクションプランで解説。",
+    coverImage: "images/2.png",
+    amazonUrl: "https://www.amazon.co.jp/dp/B0G18LRW2M",
+    category: "ebook",
+    badge: "Kindle Unlimited 対象"
+  },
+  {
+    id: "nanobanana-nyumon",
+    title: "3分でわかるAI画像のはじめ方 Nano Banana超入門 ―はじめてのAI画像生成―",
+    author: "AIイラスト・クリエイティブナビゲーター しずく",
+    description: "Googleの最新AI画像生成ツール「Nano Banana」の使い方が3分でわかる完全入門ガイド。基本操作から\"魅せる\"プロンプト設計まで解説。",
+    coverImage: "images/1.png",
+    amazonUrl: "https://www.amazon.co.jp/dp/B0FWQTTPFK",
+    category: "ebook",
+    badge: "Kindle Unlimited 対象"
+  },
+  {
+    id: "googlemap-choshinkaron",
+    title: "2026年版 Googleマップ超進化論 完全マニュアル ―AI時代の最強パートナー―",
+    author: "AIアドバイザー 水月 雫",
+    description: "探す・迷う・悩む時間はもう終わり。Geminiと歩く超・活用術。AI時代の最強パートナー、完全マニュアル。",
+    coverImage: "images/11.png",
+    amazonUrl: "https://www.amazon.co.jp/dp/B0FPD7GHFL",
     category: "ebook",
     badge: "Kindle Unlimited 対象"
   }
