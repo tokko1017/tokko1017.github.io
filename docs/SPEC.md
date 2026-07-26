@@ -49,7 +49,8 @@ IEEE準拠のフルSRS/SDDではなく、保守に必要な最小限の情報に
 | ID | 要件 | 優先度 | 受入基準 (ACC) | テスト (TC) |
 |---|---|---|---|---|
 | FR-BOOKLIST-001 | 本を「電子書籍」「ペーパーバック」のカテゴリーごとにセクション分けして表示する | Must | ACC-001 | TC-001 |
-| FR-BOOKLIST-002 | 各本カードに表紙画像・タイトル・説明文・Amazonボタンを表示する | Must | ACC-002 | TC-002 |
+| FR-BOOKLIST-002 | 各本カードに表紙画像・タイトル・著者名・説明文・Amazonボタンを表示する | Must | ACC-002 | TC-002 |
+| FR-BOOKLIST-009 | サイト上部・タブタイトル・フッターには出版レーベル名（`SITE_CONFIG.siteTitle`）を表示し、著者名は本ごとにカード内に表示する（本によって著者が異なるため） | Must | ACC-009 | TC-009 |
 | FR-BOOKLIST-003 | `js/books-data.js` の `books` 配列に1件追加し保存するだけで、ビルド操作なしに一覧に反映される | Must | ACC-003 | TC-003 |
 | FR-BOOKLIST-004 | 該当カテゴリーの本が0件のときは、空状態メッセージ（例: 準備中）を表示する | Must | ACC-004 | TC-004 |
 | FR-BOOKLIST-005 | 表紙画像が読み込めない場合、壊れた画像アイコンではなくタイトル文字のフォールバック表示にする | Should | ACC-005 | TC-005 |
@@ -71,8 +72,8 @@ IEEE準拠のフルSRS/SDDではなく、保守に必要な最小限の情報に
 
 | ID | 内容 |
 |---|---|
-| DATA-001 | `Book` = `{ id, title, description, coverImage, amazonUrl, category("ebook"｜"paperback"), badge }` |
-| DATA-002 | `SITE_CONFIG` = `{ siteTitle, authorName, introText, amazonAssociateTag, categories[] }` |
+| DATA-001 | `Book` = `{ id, title, author, description, coverImage, amazonUrl, category("ebook"｜"paperback"), badge }` |
+| DATA-002 | `SITE_CONFIG` = `{ siteTitle, introText, amazonAssociateTag, categories[] }`（`siteTitle`は出版レーベル名。著者名は個々の本に紐づくため`SITE_CONFIG`ではなく`Book.author`で管理する） |
 | DATA-003 | `categories[]` の各要素 = `{ key, label, emptyText }`（カテゴリーの表示名・並び順・空状態文言を制御） |
 
 ## 7. 外部連携（API）
@@ -89,13 +90,14 @@ IEEE準拠のフルSRS/SDDではなく、保守に必要な最小限の情報に
 | ACC | 内容 | 検証方法 (TC) |
 |---|---|---|
 | ACC-001 | index.html を開くと「電子書籍」「ペーパーバック」の見出しが表示され、本がそれぞれ正しいセクションに属している | TC-001: books-data.js の各本の category を切り替えて表示先が変わることを目視確認 |
-| ACC-002 | 各カードに画像・タイトル・説明・ボタンの4要素が揃っている | TC-002: サンプルデータ表示時に4要素が全て見える |
+| ACC-002 | 各カードに画像・タイトル・著者名・説明・ボタンの5要素が揃っている | TC-002: サンプルデータ表示時に5要素が全て見える |
 | ACC-003 | books配列に1件追加し保存→ブラウザ再読込のみで一覧に反映される（追加のコマンド不要） | TC-003: 本を1件追加してブラウザ更新のみで反映されることを確認 |
 | ACC-004 | 該当カテゴリーが0件のとき空状態文言が表示される | TC-004: paperback が0件の状態でページを開き、空状態メッセージを確認（実施済み・below参照） |
 | ACC-005 | coverImageのパスを存在しないものにしても、壊れた画像アイコンが出ずタイトル文字が表示される | TC-005: 存在しないパスを指定し、フォールバック表示を確認 |
 | ACC-006 | amazonAssociateTag に値を設定すると、生成されるリンクURLに `tag=` パラメータが付与される | TC-006: タグ設定前後でリンクURLを比較 |
 | ACC-007 | ボタンクリックで新しいタブが開く | TC-007: DOM上の `target="_blank" rel="noopener noreferrer"` を確認 |
 | ACC-008 | id重複や必須項目欠落があると `node scripts/validate-books.js` がエラー終了する | TC-008: 意図的に不正データを入れて実行し、エラー検出を確認（実施済み・below参照） |
+| ACC-009 | ページ上部・タブタイトル・フッターに「アラト出版」が表示され、著者名の一覧は表示されない。各本カードには個別の著者名が表示される | TC-009: `siteTitle`変更後の表示と、本ごとの`author`表示を確認（実施済み・below参照） |
 
 ### 実施済みテスト結果
 

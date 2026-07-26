@@ -54,12 +54,6 @@ body {
   letter-spacing: 0.02em;
 }
 
-.author-name {
-  margin: 0 0 16px;
-  color: var(--accent);
-  font-weight: 600;
-}
-
 .intro-text {
   margin: 0 auto;
   max-width: 560px;
@@ -152,9 +146,15 @@ main {
 }
 
 .book-title {
-  margin: 0 0 8px;
+  margin: 0 0 4px;
   font-size: 1.02rem;
   font-weight: 700;
+}
+
+.book-author {
+  margin: 0 0 10px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
 }
 
 .book-desc {

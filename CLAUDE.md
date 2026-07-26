@@ -33,8 +33,10 @@ docs/SPEC.md                                — 要件・設計メモ（軽量SR
 4. コミットしてpush → GitHub Actionsが検証→自動デプロイ
 
 ## 6. データモデル
-`Book`: `{ id, title, description, coverImage, amazonUrl, category: "ebook"|"paperback", badge }`
-`SITE_CONFIG`: `{ siteTitle, authorName, introText, amazonAssociateTag, categories[] }`
+`Book`: `{ id, title, author, description, coverImage, amazonUrl, category: "ebook"|"paperback", badge }`
+`SITE_CONFIG`: `{ siteTitle, introText, amazonAssociateTag, categories[] }`
+`siteTitle` は出版レーベル名（例: 「アラト出版」）として全ページ共通表示。著者名は個々の本に紐づくため
+`SITE_CONFIG` には持たせず `Book.author` で管理する（本ごとに著者が異なるため）。
 詳細は `docs/SPEC.md` セクション6。
 
 ## 7. テスト・検証

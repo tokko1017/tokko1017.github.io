@@ -16,7 +16,7 @@ const vm = require("vm");
 const DATA_FILE = path.join(__dirname, "..", "js", "books-data.js");
 const IMAGES_DIR = path.join(__dirname, "..", "images");
 
-const REQUIRED_FIELDS = ["id", "title", "description", "coverImage", "amazonUrl", "category"];
+const REQUIRED_FIELDS = ["id", "title", "author", "description", "coverImage", "amazonUrl", "category"];
 const VALID_CATEGORIES = ["ebook", "paperback"];
 
 function loadBooksData() {

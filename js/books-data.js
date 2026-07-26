@@ -12,6 +12,7 @@
  *  【各項目の説明】
  *   id          : 他の本と重複しない半角英数字のID（例: "book-002"）
  *   title       : 本のタイトル
+ *   author      : その本の著者名（本によって異なる場合はそれぞれ入力）
  *   description : タイトルの下に表示する短い紹介文（40〜80文字程度が目安）
  *   coverImage  : 表紙画像のパス（images フォルダに置いた画像ファイルを指定）
  *   amazonUrl   : Amazon の商品ページ（購入 or Kindle Unlimited で読めるページ）のURL
@@ -22,10 +23,10 @@
  */
 
 const SITE_CONFIG = {
-  // ページ上部に表示するサイトタイトルと紹介文
-  siteTitle: "著書一覧",
-  authorName: "著者名をここに入力",
-  introText: "Kindleで出版している本を紹介しています。気になる本があれば、下のボタンからAmazonのページをご覧ください。",
+  // ページ上部に表示するサイトタイトル（レーベル/出版社名）と紹介文
+  // 著者名はサイト全体ではなく、本ごとに books 配列内の author に入力します
+  siteTitle: "アラト出版",
+  introText: "アラト出版が出版している本をご紹介しています。気になる本があれば、下のボタンからAmazonのページをご覧ください。",
 
   // Amazonアソシエイト（アフィリエイト）タグ。
   // 例: "yourid-22" のように設定すると、すべてのAmazonリンクに自動で
@@ -43,6 +44,7 @@ const books = [
   {
     id: "sample-ebook-1",
     title: "（サンプル）本のタイトルをここに入力してください",
+    author: "（サンプル）著者名をここに入力",
     description: "本の内容を一言で紹介する説明文をここに書きます。読者が気になるポイントを簡潔にまとめましょう。",
     coverImage: "images/sample-cover.svg",
     amazonUrl: "https://www.amazon.co.jp/dp/XXXXXXXXXX",

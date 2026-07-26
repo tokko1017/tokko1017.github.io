@@ -52,6 +52,7 @@
         </div>
         <div class="book-body">
           <h3 class="book-title">${escapeHtml(book.title)}</h3>
+          ${book.author ? `<p class="book-author">著者: ${escapeHtml(book.author)}</p>` : ""}
           <p class="book-desc">${escapeHtml(book.description)}</p>
           <a class="book-btn" href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer">
             Amazonで見る
@@ -86,19 +87,17 @@
     const config = typeof SITE_CONFIG !== "undefined" ? SITE_CONFIG : {};
     const allBooks = typeof books !== "undefined" ? books : [];
 
-    document.title = config.siteTitle || "著書一覧";
+    document.title = config.siteTitle || "アラト出版";
     const siteTitleEl = document.getElementById("site-title");
-    const authorNameEl = document.getElementById("author-name");
     const introTextEl = document.getElementById("intro-text");
     const footerYearEl = document.getElementById("footer-year");
-    const footerAuthorEl = document.querySelector(".footer-author");
+    const footerPublisherEl = document.getElementById("footer-publisher");
     const sectionsEl = document.getElementById("book-sections");
 
-    if (siteTitleEl) siteTitleEl.textContent = config.siteTitle || "著書一覧";
-    if (authorNameEl) authorNameEl.textContent = config.authorName || "";
+    if (siteTitleEl) siteTitleEl.textContent = config.siteTitle || "アラト出版";
     if (introTextEl) introTextEl.textContent = config.introText || "";
     if (footerYearEl) footerYearEl.textContent = new Date().getFullYear();
-    if (footerAuthorEl) footerAuthorEl.textContent = config.authorName || "";
+    if (footerPublisherEl) footerPublisherEl.textContent = config.siteTitle || "アラト出版";
 
     const categories = Array.isArray(config.categories) && config.categories.length
       ? config.categories

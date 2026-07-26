@@ -39,6 +39,7 @@ python -m http.server 8000
 {
   id: "book-002",                                  // 他の本と重複しないID
   title: "本のタイトル",
+  author: "その本の著者名",                          // 本によって著者が異なる場合、それぞれ入力する
   description: "本の紹介文をここに書きます。",
   coverImage: "images/book-002-cover.jpg",         // 表紙画像のファイル名
   amazonUrl: "https://www.amazon.co.jp/dp/XXXXXXXXXX",
@@ -46,6 +47,9 @@ python -m http.server 8000
   badge: "Kindle Unlimited 対象"                     // 不要なら "" にする
 }
 ```
+
+サイト上部のタイトル（現在「アラト出版」）は出版レーベル名として全ページ共通で表示され、
+著者名は本ごとにカード内（タイトルの下）に表示されます。
 
 4. 保存して `index.html` をブラウザで再読み込みすれば、自動的に一覧に表示されます
 5. （任意）保存前に内容チェックしたい場合は、ターミナルで以下を実行
@@ -98,13 +102,14 @@ Amazonアソシエイトタグを変更できます。
 
 ```js
 const SITE_CONFIG = {
-  siteTitle: "著書一覧",
-  authorName: "著者名をここに入力",
+  siteTitle: "アラト出版",   // ページ上部・タブタイトル・フッターに表示される出版レーベル名
   introText: "紹介文をここに入力",
   amazonAssociateTag: "", // 例: "yourid-22"（設定すると全リンクに自動で付与されます）
   categories: [ ... ]      // カテゴリーの表示名・並び順・空状態の文言
 };
 ```
+
+著者名は `SITE_CONFIG` ではなく、本ごとに `books` 配列内の `author` に入力します。
 
 ---
 
