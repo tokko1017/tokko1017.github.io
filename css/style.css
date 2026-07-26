@@ -42,22 +42,50 @@ body {
 }
 
 .site-header {
-  padding: 56px 0 40px;
+  position: relative;
+  padding: 72px 24px 56px;
   text-align: center;
-  border-bottom: 1px solid var(--border);
-  background: var(--surface);
+  color: #fff;
+  background: linear-gradient(135deg, #4338ca 0%, #7c3aed 55%, #c026d3 100%);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.site-header::before,
+.site-header::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0) 70%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.site-header::before {
+  width: 420px;
+  height: 420px;
+  top: -220px;
+  left: -120px;
+}
+
+.site-header::after {
+  width: 320px;
+  height: 320px;
+  bottom: -200px;
+  right: -80px;
 }
 
 .site-header h1 {
-  margin: 0 0 8px;
-  font-size: clamp(1.6rem, 4vw, 2.2rem);
-  letter-spacing: 0.02em;
+  margin: 0 0 10px;
+  font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+  letter-spacing: 0.04em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
 }
 
 .intro-text {
   margin: 0 auto;
   max-width: 560px;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.88);
   font-size: 0.95rem;
 }
 
