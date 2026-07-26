@@ -3,12 +3,24 @@
  *  本の情報はこのファイルだけを編集すればOKです。
  *  コマンド実行やビルド作業は一切不要です。
  *
+ *  【並び順のルール】※重要
+ *   books 配列の 1〜3番目は「売れ筋・人気作」として固定表示する枠です。
+ *   （現在: 1.結婚してはいけない男の脳科学的見分け方 / 2.衝動買いは脳のバグである /
+ *          3.2026年版Googleマップ超進化論）
+ *   この3冊は新刊が出ても動かさず、そのままの位置をキープしてください。
+ *
+ *   books 配列の4番目は「最新刊」の指定席です。
+ *   新しい本を出したら、この4番目を新刊の内容に入れ替えてください。
+ *   それまで4番目にあった本は、5番目（＝下記の「新しい順」エリアの先頭）に移動させます。
+ *
+ *   5番目以降は、新しい順（新しく出た本ほど上）に並べる通常エリアです。
+ *
  *  【本を1冊追加する手順】
- *   1. 下の `books` 配列の一番上（先頭）に、カンマ区切りで1ブロック追加する
- *      ※新しい本ほど上に表示される仕組みのため、必ず「先頭」に追加してください
- *   2. 表紙画像を images フォルダに入れて、coverImage にファイル名を書く
- *   3. ファイルを保存して index.html をブラウザで開く（更新する）
- *      → 自動的にカテゴリーの一覧の一番上に追加されます
+ *   1. 新刊を出したら、4番目（最新刊の指定席）に新しい本のブロックを入れる
+ *   2. それまで4番目にあった本のブロックを、5番目（先頭）に移動する
+ *   3. 表紙画像を images フォルダに入れて、coverImage にファイル名を書く
+ *   4. ファイルを保存して index.html をブラウザで開く（更新する）
+ *      → 自動的に一覧に反映されます
  *
  *  【各項目の説明】
  *   id          : 他の本と重複しない半角英数字のID（例: "book-002"）
@@ -27,7 +39,7 @@ const SITE_CONFIG = {
   // ページ上部に表示するサイトタイトル（レーベル/出版社名）と紹介文
   // 著者名はサイト全体ではなく、本ごとに books 配列内の author に入力します
   siteTitle: "アラト出版",
-  introText: "アラト出版が出版している本をご紹介しています。気になる本があれば、下のボタンからAmazonのページをご覧ください。",
+  introText: "アラト出版が出版している本をご紹介しています。\n気になる本があれば、下のボタンからAmazonのページをご覧ください。",
 
   // Amazonアソシエイト（アフィリエイト）タグ。
   // 例: "yourid-22" のように設定すると、すべてのAmazonリンクに自動で
@@ -42,6 +54,36 @@ const SITE_CONFIG = {
 };
 
 const books = [
+  {
+    id: "kekkon-mibunkekata",
+    title: "30代女性必読！「結婚してはいけない男」の脳科学的見分け方",
+    author: "男性脳ナビゲーター 雫",
+    description: "「また同じタイプに惹かれてしまった…」30代女性必読。脳科学的な見分け方を25項目のチェックリストと30日間アクションプランで解説。",
+    coverImage: "images/2.png",
+    amazonUrl: "https://www.amazon.co.jp/dp/B0G18LRW2M",
+    category: "ebook",
+    badge: "Kindle Unlimited 対象"
+  },
+  {
+    id: "shodogai-bug",
+    title: "衝動買いは脳のバグである ―最新脳科学が教える「損しない」お金の使い方―",
+    author: "脳科学マネーアドバイザー 雫",
+    description: "「また買っちゃった…」はあなたのせいじゃない。最新脳科学が教える、年間50万円を守る「損しない」お金の使い方。",
+    coverImage: "images/3.png",
+    amazonUrl: "https://www.amazon.co.jp/dp/B0G2T6JDR4",
+    category: "ebook",
+    badge: "Kindle Unlimited 対象"
+  },
+  {
+    id: "googlemap-choshinkaron",
+    title: "2026年版 Googleマップ超進化論 完全マニュアル ―AI時代の最強パートナー―",
+    author: "AIアドバイザー 水月 雫",
+    description: "探す・迷う・悩む時間はもう終わり。Geminiと歩く超・活用術。AI時代の最強パートナー、完全マニュアル。",
+    coverImage: "images/11.png",
+    amazonUrl: "https://www.amazon.co.jp/dp/B0FPD7GHFL",
+    category: "ebook",
+    badge: "Kindle Unlimited 対象"
+  },
   {
     id: "kansatsuryoku-sainou",
     title: "観察力は、才能じゃない。 ―5つの技術で、相手の本音が見えてくる―",
@@ -153,42 +195,12 @@ const books = [
     badge: "Kindle Unlimited 対象"
   },
   {
-    id: "shodogai-bug",
-    title: "衝動買いは脳のバグである ―最新脳科学が教える「損しない」お金の使い方―",
-    author: "脳科学マネーアドバイザー 雫",
-    description: "「また買っちゃった…」はあなたのせいじゃない。最新脳科学が教える、年間50万円を守る「損しない」お金の使い方。",
-    coverImage: "images/3.png",
-    amazonUrl: "https://www.amazon.co.jp/dp/B0G2T6JDR4",
-    category: "ebook",
-    badge: "Kindle Unlimited 対象"
-  },
-  {
-    id: "kekkon-mibunkekata",
-    title: "30代女性必読！「結婚してはいけない男」の脳科学的見分け方",
-    author: "男性脳ナビゲーター 雫",
-    description: "「また同じタイプに惹かれてしまった…」30代女性必読。脳科学的な見分け方を25項目のチェックリストと30日間アクションプランで解説。",
-    coverImage: "images/2.png",
-    amazonUrl: "https://www.amazon.co.jp/dp/B0G18LRW2M",
-    category: "ebook",
-    badge: "Kindle Unlimited 対象"
-  },
-  {
     id: "nanobanana-nyumon",
     title: "3分でわかるAI画像のはじめ方 Nano Banana超入門 ―はじめてのAI画像生成―",
     author: "AIイラスト・クリエイティブナビゲーター しずく",
     description: "Googleの最新AI画像生成ツール「Nano Banana」の使い方が3分でわかる完全入門ガイド。基本操作から\"魅せる\"プロンプト設計まで解説。",
     coverImage: "images/1.png",
     amazonUrl: "https://www.amazon.co.jp/dp/B0FWQTTPFK",
-    category: "ebook",
-    badge: "Kindle Unlimited 対象"
-  },
-  {
-    id: "googlemap-choshinkaron",
-    title: "2026年版 Googleマップ超進化論 完全マニュアル ―AI時代の最強パートナー―",
-    author: "AIアドバイザー 水月 雫",
-    description: "探す・迷う・悩む時間はもう終わり。Geminiと歩く超・活用術。AI時代の最強パートナー、完全マニュアル。",
-    coverImage: "images/11.png",
-    amazonUrl: "https://www.amazon.co.jp/dp/B0FPD7GHFL",
     category: "ebook",
     badge: "Kindle Unlimited 対象"
   }
