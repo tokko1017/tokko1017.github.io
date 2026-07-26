@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>著書一覧</title>
+<meta name="description" content="Kindle出版している著書の紹介ページ">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <h1 id="site-title">著書一覧</h1>
+      <p id="author-name" class="author-name"></p>
+      <p id="intro-text" class="intro-text"></p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div id="book-sections"><!-- JSで自動生成されます --></div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>&copy; <span id="footer-year"></span> <span class="footer-author"></span></p>
+    </div>
+  </footer>
+
+  <!-- 本のデータ（本を追加するときはこのファイルだけ編集） -->
+  <script src="js/books-data.js"></script>
+  <!-- 表示ロジック（通常は編集不要） -->
+  <script src="js/main.js"></script>
+</body>
+</html>
