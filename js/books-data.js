@@ -49,7 +49,7 @@ const books = [
     coverImage: "images/1.png",
     amazonUrl: "https://www.amazon.co.jp/dp/B0FWQTTPFK",
     category: "ebook",
-    badge: ""
+    badge: "Kindle Unlimited 対象"
   },
   {
     id: "kekkon-mibunkekata",
@@ -59,7 +59,7 @@ const books = [
     coverImage: "images/2.png",
     amazonUrl: "https://www.amazon.co.jp/dp/B0G18LRW2M",
     category: "ebook",
-    badge: ""
+    badge: "Kindle Unlimited 対象"
   },
   {
     id: "shodogai-bug",
@@ -69,7 +69,7 @@ const books = [
     coverImage: "images/3.png",
     amazonUrl: "https://www.amazon.co.jp/dp/B0G2T6JDR4",
     category: "ebook",
-    badge: ""
+    badge: "Kindle Unlimited 対象"
   },
   {
     id: "zubora-kakuteishinkoku",
@@ -79,7 +79,7 @@ const books = [
     coverImage: "images/4.jpg",
     amazonUrl: "https://www.amazon.co.jp/dp/B0GBZFP912",
     category: "ebook",
-    badge: ""
+    badge: "Kindle Unlimited 対象"
   },
   {
     id: "chatgpt-eigyojutsu",
@@ -89,7 +89,7 @@ const books = [
     coverImage: "images/5.png",
     amazonUrl: "https://www.amazon.co.jp/dp/B0GHMWQPC8",
     category: "ebook",
-    badge: ""
+    badge: "Kindle Unlimited 対象"
   },
   {
     id: "iiko-yamete",
@@ -99,7 +99,7 @@ const books = [
     coverImage: "images/6.png",
     amazonUrl: "https://www.amazon.co.jp/dp/B0GL4FBMGF",
     category: "ebook",
-    badge: ""
+    badge: "Kindle Unlimited 対象"
   },
   {
     id: "wagaya-tenshi-01",
@@ -109,7 +109,7 @@ const books = [
     coverImage: "images/7.jpg",
     amazonUrl: "https://www.amazon.co.jp/dp/B0GLM7932M",
     category: "ebook",
-    badge: ""
+    badge: "Kindle Unlimited 対象"
   },
   {
     id: "wagaya-tenshi-02",
@@ -119,7 +119,7 @@ const books = [
     coverImage: "images/8.jpg",
     amazonUrl: "https://www.amazon.co.jp/dp/B0GM1PQNNM",
     category: "ebook",
-    badge: ""
+    badge: "Kindle Unlimited 対象"
   },
   {
     id: "wagaya-tenshi-03",
@@ -129,7 +129,7 @@ const books = [
     coverImage: "images/9.jpg",
     amazonUrl: "https://www.amazon.co.jp/dp/B0GNCKH9FD",
     category: "ebook",
-    badge: ""
+    badge: "Kindle Unlimited 対象"
   },
   {
     id: "googlemap-choshinkaron",
@@ -139,7 +139,7 @@ const books = [
     coverImage: "images/11.png",
     amazonUrl: "https://www.amazon.co.jp/dp/B0FPD7GHFL",
     category: "ebook",
-    badge: ""
+    badge: "Kindle Unlimited 対象"
   },
   {
     id: "kakuteishinkoku-wana",
@@ -149,7 +149,7 @@ const books = [
     coverImage: "images/10.png",
     amazonUrl: "https://www.amazon.co.jp/dp/B0GQXY2MM7",
     category: "ebook",
-    badge: ""
+    badge: "Kindle Unlimited 対象"
   },
   {
     id: "code-ai-kakasero",
@@ -159,7 +159,7 @@ const books = [
     coverImage: "images/12.jpg",
     amazonUrl: "https://www.amazon.co.jp/dp/B0H3W8XZTP",
     category: "ebook",
-    badge: ""
+    badge: "Kindle Unlimited 対象"
   },
   {
     id: "threads-note-ogonsendo",
@@ -169,7 +169,7 @@ const books = [
     coverImage: "images/13.jpg",
     amazonUrl: "https://www.amazon.co.jp/dp/B0H7WQMY3H",
     category: "ebook",
-    badge: ""
+    badge: "Kindle Unlimited 対象"
   },
   {
     id: "kotoba-jinsei",
@@ -179,7 +179,7 @@ const books = [
     coverImage: "images/14.jpg",
     amazonUrl: "https://www.amazon.co.jp/dp/B0H72MYJJ4",
     category: "ebook",
-    badge: ""
+    badge: "Kindle Unlimited 対象"
   },
   {
     id: "kansatsuryoku-sainou",
@@ -189,6 +189,6 @@ const books = [
     coverImage: "images/15.jpg",
     amazonUrl: "https://www.amazon.co.jp/dp/B0H9SXQ4JC",
     category: "ebook",
-    badge: ""
+    badge: "Kindle Unlimited 対象"
   }
 ];

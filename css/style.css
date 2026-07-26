@@ -101,7 +101,8 @@ main {
 
 .book-cover-wrap {
   position: relative;
-  aspect-ratio: 2 / 3;
+  /* Kindle表紙の標準サイズ（1600x2560px = 5:8）に合わせて、上下が切れないようにする */
+  aspect-ratio: 5 / 8;
   background: linear-gradient(135deg, #6366f1, #8b5cf6);
   overflow: hidden;
 }
@@ -109,7 +110,7 @@ main {
 .book-cover-wrap img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 
